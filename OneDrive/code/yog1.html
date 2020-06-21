@@ -1,0 +1,173 @@
+<!DOCtype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <h1>GPA Calculator</h1>
+    <link rel="stylesheet" type="text/css" href="style1.css"> 
+</head>
+<body>
+    <div id="8sub" align="CENTER">  
+    <form name="GPACalcForm">
+        <table class="table" align="CENTER">
+            <th>Subject Details</th>
+            <th>Grade</th>
+            <th>Credits</th>
+            <tr>
+                <td>Subject 1</td>
+                <td>
+                    <input class="gr1" type=text size=5 name="GR1">
+                </td>
+                <td>
+                    <input class="cr1" type=text size=3 name="CR1">
+                </td>
+            </tr>
+            <tr>
+                <td>Subject 2</td>
+                <td>
+                    <input class="gr2" type=text size=5 name="GR2">
+                </td>
+                <td>
+                    <input class="cr2" type=text size=3 name="CR2">
+                </td>
+            </tr>
+            <tr>
+                <td>Subject 3</td>
+                <td>
+                    <input class="gr3"type=text size=5 name="GR3">
+                </td>
+                <td>
+                    <input class="cr3" type=text size=3 name="CR3">
+                </td>
+            </tr>
+            <tr>
+                <td>Subject 4</td>
+                <td>
+                    <input class="gr4" type=text size=5 name="GR4">
+                </td>
+                <td>
+                    <input class="cr4" type=text size=3 name="CR4">
+                </td>
+            </tr>
+            <tr>
+                <td>Subject 5</td>
+                <td>
+                    <input class="gr5" type=text size=5 name="GR5">
+                </td>
+                <td>
+                    <input class="cr5" type=text size=3 name="CR5">
+                </td>
+            </tr>
+            <tr>
+                <td>Subject 6</td>
+                <td>
+                    <input class="gr6" type=text size=5 name="GR6">
+                </td>
+                <td>
+                    <input class="cr6" type=text size=3 name="CR6">
+                </td>
+            </tr>
+            <tr></tr>>
+                <td>Subject 7</td>
+                <td>
+                    <input class="gr7" type=text size=5 name="GR7">
+                </td>
+                <td>
+                    <input class="cr7" type=text size=3 name="CR7">
+                </td>
+            </tr>
+            <tr>
+                <td>Subject 8</td>
+                <td>
+                    <input class="gr8" type=text size=5 name="GR8">
+                </td>
+                <td>
+                    <input class="cr8" type=text size=3 name="CR8">
+                </td>
+            </tr>
+            <br>
+            <tr align=CENTER>
+                <td colspan=3>
+                    <input class="button" type="BUTTON" VALUE="Calculate" NAME="CalcButton" OnClick="gpacalc()">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <p id="demo" align="CENTER">Your GPA:</p>
+
+    <script language="Javascript">
+        function gpacalc() {
+            var gr = new Array(9);
+            var cr = new Array(9);
+            var ingr = new Array(5);
+            var incr = new Array(5);
+            var grcount = 6;
+            gr[0] = "O";
+            cr[0] = 10;
+            gr[1] = "A+";
+            cr[1] = 9;
+            gr[2] = "A";
+            cr[2] = 8;
+            gr[3] = "B+";
+            cr[3] = 7;
+            gr[4] = "B";
+            cr[4] = 6;
+            gr[5] = "RA";
+            cr[5] = 0;
+
+            ingr[0] = document.GPACalcForm.GR1.value;
+            ingr[1] = document.GPACalcForm.GR2.value;
+            ingr[2] = document.GPACalcForm.GR3.value;
+            ingr[3] = document.GPACalcForm.GR4.value;
+            ingr[4] = document.GPACalcForm.GR5.value;
+            ingr[5] = document.GPACalcForm.GR6.value;
+            ingr[6] = document.GPACalcForm.GR7.value;
+            ingr[7] = document.GPACalcForm.GR8.value;
+            incr[0] = document.GPACalcForm.CR1.value;
+            incr[1] = document.GPACalcForm.CR2.value;
+            incr[2] = document.GPACalcForm.CR3.value;
+            incr[3] = document.GPACalcForm.CR4.value;
+            incr[4] = document.GPACalcForm.CR5.value;
+            incr[5] = document.GPACalcForm.CR6.value;
+            incr[6] = document.GPACalcForm.CR7.value;
+            incr[7] = document.GPACalcForm.CR8.value;
+
+            var allgr = 0;
+            var allcr = 0;
+            var gpa = 0;
+            var ra =0;
+            for (var x = 0; x < 8; x++) {
+                if (ingr[x] == "") break;
+                var validgrcheck = 0;
+                for (var xx = 0; xx < grcount; xx++) {
+                    if (ingr[x] == gr[xx]) {
+                        allgr = allgr + (parseInt(incr[x], 10) * cr[xx]);
+                        allcr = allcr + parseInt(incr[x], 10);
+                        validgrcheck = 1;
+                        if (cr[xx]==0) {
+                            ra += incr[x];
+                        }
+                        break;
+                    }
+                }
+                if (validgrcheck == 0) {
+                    alert("Error- Could not recognize the grade entered for Class " + eval(x + 1) + ". Please enter valid grade");
+                    return 0;
+                }
+            }
+
+            if (allcr == 0) {
+                alert("Error- You did not enter any credit values");
+                return 0;
+            }
+            gpa = allgr / (allcr - ra);
+            //alert("GPA =  " + eval(gpa));
+            document.getElementById("demo").innerHTML = gpa;
+            return 0;
+        }
+    </script>
+</div>
+    <center><input class="button" type="button" name="return" value="Return to Home Page" id="return" onclick="document.location='main.html'"></center>
+</body>
+</html>

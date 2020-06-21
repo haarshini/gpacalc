@@ -1,0 +1,37 @@
+h1{
+	font-family: "Comic Sans MS", cursive;
+	font-style: bold;
+	padding: 20px;
+	font-size: 55px;
+	margin: 15px 20px;
+	text-align: center;
+	text-shadow: 2px 5px 1px white;
+}
+.button{
+	background-color: #4b5052; /*black-gray #4b5052*/
+	padding: 6px 12px;
+	font-size: 26px;
+	display: inline-block;
+	cursor: pointer;
+	color: white;
+	font-family: "Comic Sans MS", cursive;
+	font-weight: bold;
+	border: 3px solid black;
+	border-radius: 15px 50px;
+	margin: 75px 75px ;
+	box-shadow: 10px 10px 5px grey;
+}
+/*body{
+	background-image: url("1.jpg") ;
+	background-repeat: no-repeat;
+	background-size: 1600px;
+}*/
+body{
+	/*background: url("tree.gif") no-repeat  right; or calc gif 70px
+	background-size: 1550px;*/
+	background: #D8DAD9 url("go.gif")  no-repeat right;
+	background-size: 600px; 	
+	margin: 75px auto;
+	border: 6px solid black;
+	border-style: dashed;
+}
